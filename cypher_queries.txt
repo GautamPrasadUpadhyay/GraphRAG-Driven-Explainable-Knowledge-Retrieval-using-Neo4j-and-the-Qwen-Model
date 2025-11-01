@@ -1,0 +1,25 @@
+// Cypher code for the neo4j
+MATCH p = (n)-[r]->(m)
+RETURN p
+
+MATCH pp = (paper:Paper)-[r:HAS_SECTION]->(section)
+RETURN pp, r, section
+
+//Neo4j Knowledge graph run
+
+1. python -m venv venv
+2. venv\Scripts\activate or . .\venv\Scripts\Activate.ps1
+3. pip install -r requirements.txt
+4. python load_to_neo4j.py .\lung_cancer_fixed.json
+
+
+open location of instance of database
+create import folder:  keep the json file there
+open conf folder: create apoc.conf then:
+
+apoc.import.file.enabled=true
+apoc.import.file.use_neo4j_config=true
+dbms.security.allow_csv_import_from_file_urls=true
+
+//Ollama Run
+ollama run qwen2:7b
